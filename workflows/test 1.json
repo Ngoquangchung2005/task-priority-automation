@@ -1,0 +1,152 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "fdb79bce-a0d1-43be-bb9c-800532b6bda2",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1U1n3XTqtm76wxpRDzv6l1Z6RvRxXJJeWMmVu7opNRxo",
+          "mode": "list",
+          "cachedResultName": "n8n_test_sheet",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1U1n3XTqtm76wxpRDzv6l1Z6RvRxXJJeWMmVu7opNRxo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1U1n3XTqtm76wxpRDzv6l1Z6RvRxXJJeWMmVu7opNRxo/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "time": "={{$json.time}}",
+            "message": "={{$json.message}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "time",
+              "displayName": "time",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        416,
+        0
+      ],
+      "id": "2024c12b-64bd-4db3-be6c-dec0b5598d62",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "8ohxwIBB7GyiwqF6",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "229adfd5-d38f-4951-adb6-b7ef0e3b2be0",
+              "name": "time",
+              "value": "={{$now}}",
+              "type": "string"
+            },
+            {
+              "id": "22a56fa7-6a90-4527-9e44-35ee7f39a0ae",
+              "name": "message",
+              "value": "Hello OAuth Test",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ],
+      "id": "ba88e2b0-df7c-44c6-8ca1-5128bd5ee18d",
+      "name": "Edit Fields"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        []
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "7ff417e4-71d8-45ce-87d5-7a4b800d9c23",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "86908ced7abe74099e3172e110ad6bb646d8398960a8a2727cadc20e59bf7ede"
+  },
+  "id": "KBIvt2TcQLz36EtWkSaiz",
+  "tags": []
+}
